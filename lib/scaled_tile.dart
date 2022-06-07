@@ -1,14 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 /// Class only use in order to give access to StaggeredTile to users
-class ScaledTile extends StaggeredTile {
+class ScaledTile extends StaggeredGridTile {
   /// Creates a [ScaledTile] with the given [crossAxisCellCount] that
   /// fit its main axis extent to its content.
   ///
   /// This tile will have a fixed main axis extent.
   ScaledTile.fit(
     int crossAxisCellCount,
-  ) : super.fit(crossAxisCellCount);
+    Widget child,
+  ) : super.fit(crossAxisCellCount: crossAxisCellCount, child: child);
 
   /// Creates a [ScaledTile] with the given [crossAxisCellCount] and
   /// [mainAxisExtent].
@@ -17,7 +19,11 @@ class ScaledTile extends StaggeredTile {
   ScaledTile.extent(
     int crossAxisCellCount,
     double mainAxisExtent,
-  ) : super.extent(crossAxisCellCount, mainAxisExtent);
+    Widget child,
+  ) : super.extent(
+            crossAxisCellCount: crossAxisCellCount,
+            mainAxisExtent: mainAxisExtent,
+            child: child);
 
   /// Creates a [ScaledTile] with the given [crossAxisCellCount] and
   /// [mainAxisCellCount].
@@ -27,5 +33,9 @@ class ScaledTile extends StaggeredTile {
   ScaledTile.count(
     int crossAxisCellCount,
     num mainAxisCellCount,
-  ) : super.count(crossAxisCellCount, mainAxisCellCount);
+    Widget child,
+  ) : super.count(
+            crossAxisCellCount: crossAxisCellCount,
+            mainAxisCellCount: mainAxisCellCount,
+            child: child);
 }

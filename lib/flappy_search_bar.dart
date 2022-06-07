@@ -31,7 +31,8 @@ class SearchBarController<T> {
   CancelableOperation _cancelableOperation;
   int minimumChars;
 
-  void setTextController(TextEditingController _searchQueryController, minimunChars) {
+  void setTextController(
+      TextEditingController _searchQueryController, minimunChars) {
     this._searchQueryController = _searchQueryController;
     this.minimumChars = minimunChars;
   }
@@ -268,7 +269,8 @@ class _SearchBarState<T> extends State<SearchBar<T>>
     searchBarController =
         widget.searchBarController ?? SearchBarController<T>();
     searchBarController.setListener(this);
-    searchBarController.setTextController(_searchQueryController, widget.minimumChars);
+    searchBarController.setTextController(
+        _searchQueryController, widget.minimumChars);
   }
 
   @override
@@ -338,19 +340,19 @@ class _SearchBarState<T> extends State<SearchBar<T>>
       List<T> items, Widget Function(T item, int index) builder) {
     return Padding(
       padding: widget.listPadding,
-      child: StaggeredGridView.countBuilder(
+      child: StaggeredGrid.count(
         crossAxisCount: widget.crossAxisCount,
-        itemCount: items.length,
-        shrinkWrap: widget.shrinkWrap,
-        staggeredTileBuilder:
-            widget.indexedScaledTileBuilder ?? (int index) => ScaledTile.fit(1),
-        scrollDirection: widget.scrollDirection,
+        //itemCount: items.length,
+        //shrinkWrap: widget.shrinkWrap,
+        //staggeredTileBuilder:
+        //    widget.indexedScaledTileBuilder ?? (int index) => ScaledTile.fit(1),
+        // scrollDirection: widget.scrollDirection,
         mainAxisSpacing: widget.mainAxisSpacing,
         crossAxisSpacing: widget.crossAxisSpacing,
-        addAutomaticKeepAlives: true,
-        itemBuilder: (BuildContext context, int index) {
-          return builder(items[index], index);
-        },
+        //addAutomaticKeepAlives: true,
+        // itemBuilder: (BuildContext context, int index) {
+        //   return builder(items[index], index);
+        // },
       ),
     );
   }
